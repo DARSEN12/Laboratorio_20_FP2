@@ -24,9 +24,9 @@ public class BatallaEntreEjercitos {
         }
 
         if (soldados1.isEmpty()) {
-            System.out.println("\n¡El Ejército 2 ha ganado la batalla!");
+            System.out.println("\nEl Ejercito 2 ha ganado la batalla!");
         } else {
-            System.out.println("\n¡El Ejército 1 ha ganado la batalla!");
+            System.out.println("\nEl Ejercito 1 ha ganado la batalla!");
         }
     }
 }
