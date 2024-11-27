@@ -30,6 +30,22 @@ public abstract class Soldado {
         this.puntosDeVida += cantidad;
     }
 
+    public int getFila() {
+        return fila;
+    }
+
+    public void setFila(int fila) {
+        this.fila = fila;
+    }
+
+    public int getColumna() {
+        return columna;
+    }
+
+    public void setColumna(int columna) {
+        this.columna = columna;
+    }
+
     @Override
     public String toString() {
         return "Soldado{" +

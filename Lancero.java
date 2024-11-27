@@ -9,7 +9,7 @@ public class Lancero extends Soldado {
     @Override
     public void accionEspecial() {
         System.out.println(nombre + " utiliza 'Schiltrom', aumentando su defensa.");
-        incrementarVida(1); // Aumenta el nivel de vida como bonificación.
+        incrementarVida(1); 
     }
 
     @Override
