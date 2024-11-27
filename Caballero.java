@@ -1,13 +1,11 @@
 public class Caballero extends Soldado {
     private String armaActual;
     private boolean montado;
-
     public Caballero(String nombre, int puntosDeVida, int fila, int columna) {
         super(nombre, puntosDeVida, fila, columna);
         this.armaActual = "espada";
         this.montado = false;
     }
-
     public void montar() {
         if (!montado) {
             montado = true;
@@ -17,7 +15,6 @@ public class Caballero extends Soldado {
             System.out.println(nombre + " ya está montado.");
         }
     }
-
     public void desmontar() {
         if (montado) {
             montado = false;
@@ -27,13 +24,11 @@ public class Caballero extends Soldado {
             System.out.println(nombre + " ya está desmontado.");
         }
     }
-
     @Override
     public void accionEspecial() {
         int ataques = montado ? 3 : 2;
         System.out.println(nombre + " realiza " + ataques + " ataques con su " + armaActual + ".");
     }
-
     @Override
     public String toString() {
         return "Caballero{" +
