@@ -9,7 +9,7 @@ public class Arquero extends Soldado {
     public void dispararFlecha() {
         if (numeroDeFlechas > 0) {
             numeroDeFlechas--;
-            System.out.println(nombre + " disparó una flecha. Flechas restantes: " + numeroDeFlechas);
+            System.out.println(nombre + " disparo una flecha. Flechas restantes: " + numeroDeFlechas);
         } else {
             System.out.println(nombre + " no tiene flechas disponibles.");
         }
