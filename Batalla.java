@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.*;
 
 public class Batalla {
     private static final Random random = new Random();
@@ -16,11 +16,11 @@ public class Batalla {
 
         if (resultado < probabilidadSoldado1) {
             soldado1.incrementarVida(1); 
-            System.out.println(soldado1.getNombre() + " ganó la batalla.");
+            System.out.println(soldado1.getNombre() + " gano la batalla.");
             return soldado1;
         } else {
             soldado2.incrementarVida(1); 
-            System.out.println(soldado2.getNombre() + " ganó la batalla.");
+            System.out.println(soldado2.getNombre() + " gano la batalla.");
             return soldado2;
         }
     }
