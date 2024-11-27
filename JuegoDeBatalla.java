@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class JuegoDeBatalla {
     private final Ejercito ejercito1;
@@ -14,10 +14,10 @@ public class JuegoDeBatalla {
     }
 
     public void iniciar() {
-        System.out.println("¡Bienvenidos al juego de batalla!");
-        System.out.println("Ejército 1:");
+        System.out.println("Bienvenidos al juego de batalla!");
+        System.out.println("Ejercito 1: ");
         ejercito1.getSoldados().forEach(System.out::println);
-        System.out.println("\nEjército 2:");
+        System.out.println("\nEjercito 2: ");
         ejercito2.getSoldados().forEach(System.out::println);
 
         boolean juegoActivo = true;
@@ -35,11 +35,11 @@ public class JuegoDeBatalla {
                 System.out.println((i + 1) + ". " + ejercitoActual.getSoldados().get(i));
             }
 
-            System.out.print("Selecciona el soldado a mover (número): ");
+            System.out.print("Selecciona el soldado a mover (numero): ");
             int seleccion = scanner.nextInt() - 1;
 
             if (seleccion < 0 || seleccion >= ejercitoActual.getSoldados().size()) {
-                System.out.println("Selección inválida. Pierdes tu turno.");
+                System.out.println("Seleccion invalida. Pierdes tu turno");
                 turnoJugador1 = !turnoJugador1;
                 continue;
             }
@@ -72,20 +72,20 @@ public class JuegoDeBatalla {
                     tablero.moverSoldado(soldadoSeleccionado, nuevaFila, nuevaColumna);
                 }
             } else {
-                System.out.println("Movimiento inválido. Pierdes tu turno.");
+                System.out.println("Movimiento invalido. Pierdes tu turno");
             }
 
             if (ejercito1.getSoldados().isEmpty()) {
-                System.out.println("\n¡El jugador 2 ha ganado la batalla!");
+                System.out.println("\nEl jugador 2 ha ganado la batalla!");
                 juegoActivo = false;
             } else if (ejercito2.getSoldados().isEmpty()) {
-                System.out.println("\n¡El jugador 1 ha ganado la batalla!");
+                System.out.println("\nEl jugador 1 ha ganado la batalla!");
                 juegoActivo = false;
             } else {
                 turnoJugador1 = !turnoJugador1;
             }
         }
 
-        System.out.println("Juego terminado.");
+        System.out.println("Juego terminado");
     }
 }
