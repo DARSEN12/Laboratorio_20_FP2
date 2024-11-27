@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class BatallaEntreEjercitos extends Batalla {
     private Ejercito ejercito1;
     private Ejercito ejercito2;
@@ -12,12 +13,21 @@ public class BatallaEntreEjercitos extends Batalla {
     public void iniciar() {
         System.out.println("¡La batalla entre ejércitos comienza!");
 
+        mostrarEstadisticasIniciales();
+        
         while (!ejercito1.getSoldados().isEmpty() && !ejercito2.getSoldados().isEmpty()) {
             turno();
         }
 
-        determinarGanador();
+        mostrarResumenFinal();
     }
+
+    private void mostrarEstadisticasIniciales() {
+        System.out.println("\n--- Estadísticas Iniciales ---");
+        calcularEstadisticas(ejercito1);
+        calcularEstadisticas(ejercito2);
+    }
+    
 
     private void turno() {
         Soldado soldado1 = seleccionarSoldadoAleatorio(ejercito1.getSoldados());
@@ -45,33 +55,57 @@ public class BatallaEntreEjercitos extends Batalla {
         return soldados.get(random.nextInt(soldados.size()));
     }
 
-    private void determinarGanador() {
-        System.out.println("\n¡La batalla ha terminado!");
+    private void mostrarResumenFinal() {
+        System.out.println("\n--- Resumen Final de la Batalla ---");
 
-        if (ejercito1.getSoldados().isEmpty() && ejercito2.getSoldados().isEmpty()) {
-            System.out.println("¡Es un empate! Ambos ejércitos han caído.");
-        } else if (ejercito1.getSoldados().isEmpty()) {
-            System.out.println("¡" + ejercito2.getNombre() + " ha ganado la batalla!");
-        } else {
-            System.out.println("¡" + ejercito1.getNombre() + " ha ganado la batalla!");
-        }
+        // Determinar ganador
+        String ganador = determinarGanador();
 
+        // Mostrar estadísticas
         calcularEstadisticas(ejercito1);
         calcularEstadisticas(ejercito2);
+
+        System.out.println("\n¡La batalla ha terminado!");
+        System.out.println("Ganador: " + ganador);
+    }
+
+    private String determinarGanador() {
+        if (ejercito1.getSoldados().isEmpty() && ejercito2.getSoldados().isEmpty()) {
+            return "Empate";
+        } else if (ejercito1.getSoldados().isEmpty()) {
+            return ejercito2.getNombre();
+        } else {
+            return ejercito1.getNombre();
+        }
     }
 
     private void calcularEstadisticas(Ejercito ejercito) {
         List<Soldado> soldados = ejercito.getSoldados();
+
         if (soldados.isEmpty()) {
-            System.out.println(ejercito.getNombre() + " no tiene soldados sobrevivientes.");
+            System.out.println("\n" + ejercito.getNombre() + " no tiene soldados sobrevivientes.");
             return;
         }
 
-        Soldado soldadoConMayorVida = soldados.stream().max((s1, s2) -> Integer.compare(s1.getPuntosDeVida(), s2.getPuntosDeVida())).orElse(null);
-        double promedioVida = soldados.stream().mapToInt(Soldado::getPuntosDeVida).average().orElse(0);
+        // Soldado con mayor vida
+        Soldado soldadoConMayorVida = soldados.stream()
+                .max(Comparator.comparingInt(Soldado::getPuntosDeVida))
+                .orElse(null);
 
-        System.out.println("\nEstadísticas de " + ejercito.getNombre() + ":");
-        System.out.println("Soldado con mayor vida: " + soldadoConMayorVida);
+        // Promedio de puntos de vida
+        double promedioVida = soldados.stream()
+                .mapToInt(Soldado::getPuntosDeVida)
+                .average()
+                .orElse(0);
+
+        // Ordenar soldados por nivel de vida
+        soldados.sort(Comparator.comparingInt(Soldado::getPuntosDeVida).reversed());
+
+        // Mostrar estadísticas
+        System.out.println("\n--- Estadísticas de " + ejercito.getNombre() + " ---");
         System.out.println("Promedio de puntos de vida: " + promedioVida);
+        System.out.println("Soldado con mayor vida: " + (soldadoConMayorVida != null ? soldadoConMayorVida : "N/A"));
+        System.out.println("Ranking de soldados por nivel de vida:");
+        soldados.forEach(System.out::println);
     }
 }
