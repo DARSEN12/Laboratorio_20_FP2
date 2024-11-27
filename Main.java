@@ -12,5 +12,8 @@ public class Main {
         ejercito2.imprimirEjercito();
 
         tablero.mostrarTablero(ejercito1, ejercito2);
+
+        BatallaEntreEjercitos batalla = new BatallaEntreEjercitos(ejercito1, ejercito2);
+        batalla.iniciar();
     }
 }
