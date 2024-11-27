@@ -11,7 +11,7 @@ Este trabajo requiere de mostrar datos mas no de hacerlo interactivo.
 
 El avance en este trabajo se baso en estos 4 puntos.
 
-Crear la clase padre Soldado y las clases hijas con características específicas.
-Generar los ejércitos y el tablero de juego.
-Implementar la lógica de combate y resolución de turnos.
-Diseñar la mecánica para una batalla entre dos jugadores.
+1. Implementación de la clase abstracta padre (Soldado) y las clases hijas (Caballero, Arquero, Espadachin y Lancero)
+2. Generar los ejércitos y el tablero de juego.
+3. Implementar la lógica de combate y resolución de turnos.
+4. Estadísticas y definición del ganador
