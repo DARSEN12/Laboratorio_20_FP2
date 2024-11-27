@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
+<<<<<<< HEAD
         Tablero tablero = new Tablero(10, 10);
         Ejercito ejercito1 = new Ejercito("Ejército 1");
         Ejercito ejercito2 = new Ejercito("Ejército 2");
@@ -12,3 +13,16 @@ public class Main {
         batalla.iniciar();
     }
 }
+=======
+        Ejercito ejercito1 = new Ejercito();
+        Ejercito ejercito2 = new Ejercito();
+        Tablero tablero = new Tablero();
+
+        tablero.colocarEjercitos(ejercito1, ejercito2); 
+
+        JuegoDeBatalla juego = new JuegoDeBatalla(tablero, ejercito1, ejercito2);
+        juego.iniciar();
+    }
+}
+
+>>>>>>> ab8b095bed20f7cef1f015b6c6557be3b224d211
